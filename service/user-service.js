@@ -88,12 +88,17 @@ class UserService {
     const user = await conn.execute(
       `select * from ictdat.perus where kod = ${userData.KOD}`
     );
-    const userDto = new UserDto(user.rows[0]);
-    const tokens = tokenService.generateTokens({ ...userDto });
+// console.log(user.rows[0].KOD_UR);
+const urName = await conn.execute(`select * from ictdat.ur where kod = ${user.rows[0].KOD_UR}`)
+console.log(urName.rows[0].NUR);
+// const urInfo = urName
+    const userDto = new UserDto({...user.rows[0]});
+    const tokens = tokenService.generateTokens({ ...userDto});
     await tokenService.saveToken(userDto.KOD, tokens.refreshToken);
     return {
       ...tokens,
-      user: userDto,
+      user: {...userDto,NUR:urName.rows[0].NUR},
+      
     };
   }
 

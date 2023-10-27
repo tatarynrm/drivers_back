@@ -22,9 +22,11 @@ const wrap = (sessionMiddleware) => (socket, next) => {
 };
 
 const corsConfig = {
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+    origin: "*",
     credentials: true,
   }
+
 module.exports = {
   sessionMiddleware,
   wrap,

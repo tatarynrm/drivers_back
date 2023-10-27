@@ -7,7 +7,6 @@ const pool = require("../db/pool");
 
 class TransportationService {
   async transportations(KOD) {
-    console.log("12312", KOD);
     const connection = await oracledb.getConnection(pool);
     connection.currentSchema = "ICTDAT";
     // const res = await connection.execute(`select * from zap`)
