@@ -30,6 +30,7 @@ class UserService {
       autoCommit: true,
     };
     const result = await connection.execute(sql, binds, options);
+    console.log(result);
     const thisUser = await connection.execute(
       `select * from ictdat.perus where email = '${email}'`
     );
