@@ -48,7 +48,7 @@ app.use('/lardi',externalLardiRouter)
 
 // Error Має бути в кінці
 app.use(errrorMiddleware);
-// app.use(sessionMiddleware);
+app.use(sessionMiddleware);
 
 app.get('/ok',async(req,res) =>{
   try {
@@ -71,7 +71,7 @@ io.on("connect", (socket) => {
 // },2000)
 
 
-server.listen(4000, async () => {
+server.listen(process.env.PORT || 4400, async () => {
   // await initDb();
-  console.log("server is running");
+  console.log(`Server on PORT : 4400`);
 });

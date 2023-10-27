@@ -5,7 +5,7 @@ const transportationService = require("../service/transportation-service");
 class TransportationController {
   async transportation(req, res, next) {
     const { KOD } = req.body;
-    console.log(KOD);
+
     try {
       const userData = await transportationService.transportations(KOD);
       res.json(userData.result.rows);
@@ -19,10 +19,10 @@ class TransportationController {
       // const zap = userData.filter(item => !item.ZAM)
       const items = userData.result.rows;
       // const zap = items.splice(1,1)
-      const updatedArray = items.map(item => {
+      const updatedArray = items.map((item) => {
         // Modify properties of the objects
-        return { ...item, ZAPTEXT: '' };
-    });
+        return { ...item, ZAPTEXT: "" };
+      });
       res.json(updatedArray);
     } catch (e) {
       next(e);

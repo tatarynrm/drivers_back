@@ -14,7 +14,6 @@ class UserService {
       `select * from ictdat.perus where email = '${email}' `
     );
     if (candidate.rows > 0) {
-      console.log("-------------------", candidate.rows);
       return ApiError.BadRequest(`Користувач з таким емейлом вже існує.`);
     }
     const hashPassword = await bcrypt.hash(password, 10);
@@ -22,7 +21,7 @@ class UserService {
     const binds = {
       val1: email,
       val2: hashPassword,
-      val3: 7421,
+      val3: 323191,
       val4: new Date(),
       outbind: { type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
     };
@@ -35,9 +34,9 @@ class UserService {
     );
     const userData = thisUser.rows[0];
     const userDto = new UserDto(userData);
-    console.log(userDto);
+
     const tokens = tokenService.generateTokens({ ...userDto });
-    console.log(tokens);
+
     await tokenService.saveToken(userDto.KOD, tokens.refreshToken);
     return {
       ...tokens,
@@ -99,7 +98,6 @@ class UserService {
   }
 
   async getInfo(KOD_UR) {
-  
     const conn = await oracledb.getConnection(pool);
     const users = await conn.execute(`
     select count(*) as kp_all,

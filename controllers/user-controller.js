@@ -29,7 +29,7 @@ class UserController {
       const connection = await oracledb.getConnection(pool);
       const { email, password } = req.body;
       const userData = await userService.login(email, password);
-      console.log(userData.user.KOD_UR);
+
 
       const result = await connection.execute(
         `
@@ -56,7 +56,7 @@ class UserController {
     try {
       const { refreshToken } = req.cookies;
       const token = userService.logout(refreshToken);
-      console.log(refreshToken);
+
       res.clearCookie("refreshToken");
       return res.json(token);
     } catch (e) {
@@ -66,6 +66,7 @@ class UserController {
   async refresh(req, res, next) {
     try {
       const { refreshToken } = req.cookies;
+
       const userData = await userService.refresh(refreshToken);
 
       res.cookie("refreshToken", userData.refreshToken, {
@@ -103,6 +104,7 @@ class UserController {
       });
     } catch (e) {
       next(e);
+     
     }
   }
 }
