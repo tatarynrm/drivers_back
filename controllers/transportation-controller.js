@@ -25,6 +25,7 @@ class TransportationController {
       });
       res.json(updatedArray);
     } catch (e) {
+      console.log(e);
       next(e);
     }
   }

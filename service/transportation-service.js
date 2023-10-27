@@ -78,6 +78,7 @@ order by a.dat desc FETCH FIRST 300 ROWS ONLY`
   async getAllZap() {
     const connection = await oracledb.getConnection(pool);
     connection.currentSchema = "ICTDAT";
+
     try {
       const result = await connection.execute(
         `SELECT a.*,
@@ -93,6 +94,7 @@ order by a.dat desc FETCH FIRST 300 ROWS ONLY`
       join zaplst l on a.kod = l.kod_zap
       WHERE a.status = 0`
       );
+      console.log(result);
       return {
         result,
       };
