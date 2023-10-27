@@ -23,7 +23,9 @@ const wrap = (sessionMiddleware) => (socket, next) => {
 
 const corsConfig = {
     // origin: "http://localhost:3000",
+    // origin: "http://carriers.ict.lviv.ua",
     origin: "*",
+    methods:["GET","POST"],
     credentials: true,
   }
 

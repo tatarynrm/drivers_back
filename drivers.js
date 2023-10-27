@@ -73,5 +73,5 @@ io.on("connect", (socket) => {
 
 server.listen(process.env.PORT || 8801, async () => {
   // await initDb();
-  console.log(`Server on PORT : 4400`);
+  console.log(`Server on PORT : ${process.env.PORT}`);
 });
