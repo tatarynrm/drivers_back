@@ -21,7 +21,9 @@ class UserController {
       });
       res.json(userData);
     } catch (e) {
+      console.log(e);
       next(e);
+      
     }
   }
   async login(req, res, next) {
