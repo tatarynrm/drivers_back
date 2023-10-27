@@ -59,6 +59,15 @@ app.get('/ok',async(req,res) =>{
     console.log(error);
   }
 })
+app.get('/me',async(req,res) =>{
+  try {
+    res.json({
+      data:"ME!!!!!!!!!"
+    })
+  } catch (error) {
+    console.log(error);
+  }
+})
 io.use(wrap(sessionMiddleware));
 io.use(authorizeUser);
 io.on("connect", (socket) => {
