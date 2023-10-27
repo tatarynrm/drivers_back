@@ -27,7 +27,7 @@
     "nodemailer": "^6.9.7",
     "nodemailer-express-handlebars": "^6.1.0",
     "nodemon": "^3.0.1",
-    "oracledb": "^6.2.0",
+    "oracledb": "^5.5.0",
     "pg": "^8.11.3",
     "socket.io": "^4.7.2",
     "uuid": "^9.0.1",
