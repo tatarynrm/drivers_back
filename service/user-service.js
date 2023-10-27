@@ -9,6 +9,7 @@ const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-errors");
 class UserService {
   async registration(email, password) {
+    console.log(email);
     const connection = await oracledb.getConnection(pool);
     const candidate = await connection.execute(
       `select * from ictdat.perus where email = '${email}' `
