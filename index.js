@@ -50,6 +50,15 @@ app.use('/lardi',externalLardiRouter)
 app.use(errrorMiddleware);
 // app.use(sessionMiddleware);
 
+app.get('/ok',async(req,res) =>{
+  try {
+    res.json({
+      data:"OK"
+    })
+  } catch (error) {
+    console.log(error);
+  }
+})
 io.use(wrap(sessionMiddleware));
 io.use(authorizeUser);
 io.on("connect", (socket) => {
